@@ -1,0 +1,30 @@
+[project]
+name = "douyin-web-backend"
+version = "0.1.0"
+description = "抖音 MP3 下载/转写流水线 Web 后端"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "sqlalchemy>=2.0",
+    "alembic>=1.13",
+    "arq>=0.26",
+    "redis>=5.0",
+    "httpx>=0.27",
+    "f2>=0.0.1",
+    "python-multipart>=0.0.9",
+    "pydantic-settings>=2.3",
+    "openai-whisper>=20231117",
+    "mlx-whisper>=0.1.0; platform_machine=='arm64' and sys_platform=='darwin'",
+]
+
+[tool.uv]
+# f2 依赖较多,允许预发布
+prerelease = "allow"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
